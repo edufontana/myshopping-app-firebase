@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Alert} from 'react-native'
 import firebase from '@react-native-firebase/app';
 import firestore from '@react-native-firebase/firestore'
 
@@ -15,10 +16,13 @@ export function FormBox() {
       firestore().collection('products').add({
         description,
         quantity,
-        done: false,
+        done:false
       }).then(()=>{
-        alert('success')
-      }).catch((error) => alert(error))
+
+        Alert.alert('produto adicionado')
+      }).catch((err)=>{
+        Alert.alert(err)
+      })
       
 
   }
